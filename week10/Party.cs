@@ -34,4 +34,16 @@ public class Party : IEnumerable<Character>
             }
         }
     }
+
+    public IEnumerable<Character> ShowLowHp(int hp)
+    {
+        foreach (var character in characters)
+        {
+            if (character.Health < hp)
+            {
+                yield return character;
+            }
+        }
+    }
+    
 }
