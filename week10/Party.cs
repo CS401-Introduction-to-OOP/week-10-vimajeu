@@ -2,20 +2,14 @@ using System.Collections;
 
 namespace week10;
 
-public class Party<T> : IEnumerable<T> where T : Character
+public class Party : IEnumerable<Character>
 {
-    private List<Character> characters;
-
-    public Party(List<Character> chars)
-    {
-        characters = chars;
-    }
+    private List<Character> characters = new();
     
-    public IEnumerator<T> GetEnumerator()
+    public IEnumerator<Character> GetEnumerator()
     {
-        foreach (var character1 in characters)
+        foreach (var character in characters)
         {
-            var character = (T)character1;
             yield return character;
         }
     }
@@ -30,21 +24,13 @@ public class Party<T> : IEnumerable<T> where T : Character
         characters.Add(character);
     }
 
-    public void ShowAllCharacters()
-    {
-        foreach (var character in characters)
-        {
-            Console.WriteLine(character);
-        }
-    }
-
-    public void ShowAllActive()
+    public IEnumerable<Character> ShowAllActive()
     {
         foreach (var character in characters)
         {
             if (character.State == Character.Status.Active)
             {
-                Console.WriteLine(character);
+                yield return character;
             }
         }
     }
