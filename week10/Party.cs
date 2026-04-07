@@ -37,4 +37,15 @@ public class Party<T> : IEnumerable<T> where T : Character
             Console.WriteLine(character);
         }
     }
+
+    public void ShowAllActive()
+    {
+        foreach (var character in characters)
+        {
+            if (character.State == Character.Status.Active)
+            {
+                Console.WriteLine(character);
+            }
+        }
+    }
 }

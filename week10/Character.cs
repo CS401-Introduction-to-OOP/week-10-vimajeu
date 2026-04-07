@@ -35,4 +35,6 @@ public class Character
             State = Status.Active;
         }
     }
+
+    public override string ToString() => $"Character: {Name}";
 }
