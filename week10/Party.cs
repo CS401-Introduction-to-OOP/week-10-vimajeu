@@ -26,24 +26,25 @@ public class Party : IEnumerable<Character>
 
     public IEnumerable<Character> ShowAllActive()
     {
-        foreach (var character in characters)
+        foreach (var character in characters.Where(c => c.State == Character.Status.Active))
         {
-            if (character.State == Character.Status.Active)
-            {
-                yield return character;
-            }
+            yield return character;
         }
     }
 
     public IEnumerable<Character> ShowLowHp(int hp)
     {
-        foreach (var character in characters)
+        foreach (var character in characters.Where(c => c.Health < hp))
         {
-            if (character.Health < hp)
-            {
-                yield return character;
-            }
+            yield return character;
         }
     }
-    
+
+    public IEnumerable<string> GetNames()
+    {
+        foreach (var name in characters.Select(n => n.Name))
+        {
+            yield return name;
+        }
+    }
 }

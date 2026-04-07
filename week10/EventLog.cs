@@ -8,8 +8,7 @@ public class EventLog : IEnumerable<Event>
 
     public IEnumerator<Event> GetEnumerator()
     {
-        var sorted = events.OrderBy(e => e.Step);
-        foreach (var e in sorted)
+        foreach (var e in events.OrderBy(e => e.Step))
         {
             yield return e;
         }
